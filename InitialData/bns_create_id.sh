@@ -1,7 +1,6 @@
 #!/bin/bash
 
 #BEGIN DEFINITIONS: SET THESE BEFORE RUNNING
-ID_DIR="/RQexec/tvincent/Test/InitialData" #where you store your initial data folders
 PATH_TO_EOS_DMR_GEN_SCRIPT="/RQexec/tvincent/Test/eos_dmr_gen.py"
 SFHO_TABLE='Tabulated(filename=/RQexec/foucartf/EoSFiles/SFHo_ColdTable-T0.1.dat;)' #EOS TABLES (these are on briaree)
 LS220_TABLE='Tabulated(filename=/RQexec/foucartf/EoSFiles/LS220app_ColdTable.dat;)'
@@ -11,7 +10,7 @@ SHEN_TABLE='Tabulated(filename=/RQexec/foucartf/EoSFiles/HShen_ColdTable.dat;)'
 #END DEFINITIONS
 
 if [ "$#" -ne 7 ]; then
-    echo "bns_id_create.sh <separation> <m1> <m2> <eos=sfho,ls220,dd2,hshen,poly> <lastres> <paramres> <directory_name>"
+    echo "bns_id_create.sh <separation> <m1> <m2> <eos=sfho,ls220,dd2,hshen,poly> <lastres> <paramres> <initial_data_directory_full_path>"
     echo "lastres = last resolution for solve, I use 10"
     echo "paramres = last resolution for solution of parameters, I use 4"
     echo "WARNING: SET THE DEFINITIONS AT THE BEGINNING OF THIS BASH SCRIPT BEFORE USING"
@@ -35,8 +34,6 @@ echo "Hours = $hours"
 echo "Last Resolution = $lastres"
 echo "Top Level Parameter Solve = $paramres"
 
-cd $ID_DIR
-mkdir $NSNS_DIR
 cd $NSNS_DIR
 
 PrepareID -t nsns
